@@ -17,36 +17,7 @@ public class Leetcode {
 		
 	}
 	
-	
-	
-	
-	
-	
-	
-	public boolean isHappy(int n) {
-		if(n < 1) return false;
-		if(n == 1) return true;
-    HashSet<Integer> numbers = new HashSet<Integer>();
-    while(true){
-    	int s = 0;
-    	while(n > 0){
-    		s += (n%10) * (n%10);
-    		n = n/10;
-    	}
-    	if(s==1) return true;
-    	else if(numbers.contains(s)) return false;
-    	numbers.add(s);
-    	n = s;
-    	
-    }
-  }
-	
-	
-	
-	
-	
-	
-	
+
 	public int maxProfit(int[] prices) {
     int max = 0;
     int tmp = 0;
@@ -78,16 +49,7 @@ public class Leetcode {
     else return false;
   }
 	
-	public boolean containsDuplicate(int[] nums) {
-    HashSet<Integer> s = new HashSet<Integer>();
-    for(int i=0;i<nums.length; i++){
-        if(!s.add(nums[i])) return true;
-    }
-    System.out.println(s);
-    return false;
-
-    
-	}
+	
 	public int rob(int[] nums) {
     int a = 0;
     int b = 0;
