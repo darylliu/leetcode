@@ -17,17 +17,6 @@ public class Leetcode {
 		
 	}
 	
-
-	public int maxProfit(int[] prices) {
-    int max = 0;
-    int tmp = 0;
-    for(int i=1;i<prices.length; i++){
-        tmp = prices[i] - prices[i-1];
-        if(tmp>0) max = max+tmp;
-        
-    }
-    return max;
-	}
 	public boolean isPalindrome(String s) {
 		if(s.length()==0) return true;
     s = s.toLowerCase();
@@ -50,54 +39,6 @@ public class Leetcode {
   }
 	
 	
-	public int rob(int[] nums) {
-    int a = 0;
-    int b = 0;
-    for(int i=0;i<nums.length;i++){
-    	int tmp = a;
-    	a = Math.max(a, b);
-    	b = tmp + nums[i];
-    }
-    
-    return Math.max(a, b);
-    
-	}
-	public String largestNumber(int[] nums) {
-		String[] s = new String[nums.length];
-		for(int i=0;i<nums.length;i++){
-			s[i] = String.valueOf(nums[i]);
-		}
-		Arrays.sort(s, new cp());
-		String re = "";
-		for(int i=0;i<s.length;i++){
-			re = re.concat(s[i]);
-		}
-		
-		int i = 0;  
-    while (i < s.length && re.charAt(i) == '0') {  
-        i++;  
-    }  
-    if (i == s.length) return "0";
-    return re.substring(i);
-  }
-	
-	class cp implements Comparator<String>{
-
-		@Override
-		public int compare(String o1, String o2) {
-			String a = o1.concat(o2);
-			String b = o2.concat(o1);
-			int i=0;  
-      while(i<a.length()) {  
-          if(a.charAt(i)!=b.charAt(i)) {  
-              return a.charAt(i) - b.charAt(i);  
-          }  
-          ++i;  
-      }  
-      return 0;  
-		}
-		
-	}
 	
 	public String simplifyPath(String path) {
 		if (path.length() == 0 || path.length() == 1) return path;
@@ -238,18 +179,6 @@ public class Leetcode {
     return list.get(list.size()-1);
   }
 	
-	public boolean isAnagram(String s, String t) {
-		if(s==null||t==null||s.length()!=t.length()){  
-      return false;  
-		} 
-		
-    char[] array1 = s.toCharArray();
-    char[] array2 = t.toCharArray();
-    Arrays.sort(array1);
-    Arrays.sort(array2);
-    return Arrays.equals(array1, array2);
-  }
-	
 	public int maxSubArray(int[] nums) {
     int biggist = Integer.MIN_VALUE;
     int tmpSum = 0;
@@ -268,14 +197,6 @@ public class Leetcode {
     else return max;
   }
 	
-	public int singleNumber(int[] nums) {
-		HashSet<Integer> cache = new HashSet<Integer>();
-		for(int i=0; i<nums.length;i++){
-			if(!cache.contains(nums[i])) cache.add(nums[i]);
-			else cache.remove(nums[i]);
-		}
-		return (int)cache.iterator().next();
-  }
 	
 	public int majorityElement(int[] nums) {
 		int biggist = nums[0];
@@ -295,11 +216,7 @@ public class Leetcode {
 		
 	}
 	
-	public String reverseString(String s) {
-		return new StringBuilder(s).reverse().toString();
-		
-  }
-	
+
 	public void moveZeroes(int[] nums) {
 		int i=0, j=0;
 		while(j< nums.length){
@@ -355,60 +272,8 @@ public class Leetcode {
     return result;
 	}
 	
-	public int searchInsert(int[] nums, int target) {
-    int i=0;
-    int j=nums.length-1;
-    while(i<=j){
-    	int medium = (i+j)/2;
-    	if(target==nums[medium]) return medium;
-    	else if(target<nums[medium]) j = medium-1;
-    	else i = medium+1;
-    }
-    return i;
-}
 	
-	public int removeDuplicates(int[] nums) {
-    if(nums.length < 2) return nums.length;
-    int len = nums.length;
-    for(int i=1;i<nums.length;i++){
-        if(nums[i-1] == nums[i]) len--;
-    }
-    return len;
-	}
 	
-	public boolean isValid(String s) {
-		
-		Stack<Character> stack = new Stack();
-    for(int i=0; i<s.length();i++){
-    	char tmp = s.charAt(i);
-    	switch (tmp){
-    		case ']': {
-    			char p = (char) stack.pop();
-    			if (p!='[') return false;
-    			else break;
-    		}
-    		case ')': {
-    			char p = (char) stack.pop();
-    			if (p!='(') return false;
-    			else break;
-    		}
-    		case '}': {
-    			char p = (char) stack.pop();
-    			if (p!='{') return false;
-    			else break;
-    		}
-    		default :{
-    			stack.push(tmp);
-    		}
-    	}
-    		
-    }
-    System.out.println(stack);
-    if(stack.isEmpty()) return true;
-    else return false;
-    
-    
-  }
 	
 	public List<String> letterCombinations(String digits) {
 		List<String> res = new ArrayList<String>();
