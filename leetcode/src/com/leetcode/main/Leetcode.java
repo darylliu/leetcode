@@ -38,30 +38,6 @@ public class Leetcode {
     else return false;
   }
 	
-	
-	
-	public String simplifyPath(String path) {
-		if (path.length() == 0 || path.length() == 1) return path;
-		path = path.replaceAll("//", "/");
-    String[] array = path.substring(1, path.length()-1).split("/");
-    if (path.charAt(path.length()-1) != '/') array = path.substring(1, path.length()).split("/");
-    System.out.println(Arrays.toString(array));
-    Stack s = new Stack();
-    for(int i=0; i<array.length;i++){
-        if(array[i].equals(".")) continue;
-        else if(array[i].equals("..") && !s.isEmpty()) s.pop();
-        else if(array[i].equals("..") && s.isEmpty()) continue;
-        else s.push(array[i]);
-    }
-    String result = "";
-    while(!s.isEmpty()){
-        result = "/"+s.pop()+result;
-    }
-    if(result.length()==0) return "/";
-    return result;
-    
-	}
-	
 	public boolean searchMatrix(int[][] matrix, int target) {
     int m = matrix.length-1;
     int n = matrix[0].length-1;
@@ -94,63 +70,8 @@ public class Leetcode {
     else return false;
     
 	}
-	public int uniquePathsWithObstacles(int[][] obstacleGrid) {
-    int[][] array = Arrays.copyOf(obstacleGrid, obstacleGrid.length);
-    
-    for(int i=0; i<array.length; i++){
-      for (int j=0; j<array[0].length; j++){
-          if (array[i][j] == 1 ) array[i][j] = -1;
-      }
-    	}
-    if(array[0][0]==-1) return 0;
-    array[0][0] = 1;
-    
-    for(int i=0; i<array.length; i++){
-        for (int j=0; j<array[0].length; j++){
-        		if(array[i][j] == -1) continue;
-        		if (i==0 && j==0) continue;
-        		else if(i == 0 && j!=0 ) {
-        			if(array[i][j-1] != -1) 
-        				array[i][j] = array[i][j-1];
-        		}
-            else if(i != 0 && j == 0 ) {
-            	if(array[i-1][j] != -1) 
-            		array[i][j] = array[i-1][j];
-            }
-            else {
-            	if(array[i][j-1] != -1) 
-        				array[i][j] += array[i][j-1];
-            	if(array[i-1][j] != -1) 
-            		array[i][j] += array[i-1][j];
-            }
-        }
-        
-    }
-
-    return array[array.length-1][array[0].length-1];
-}
-	public int uniquePaths(int m, int n) {
-    int[][] array = new int[m][n];
-    for(int i=0; i<m; i++){
-        for (int j=0; j<n; j++){
-            array[i][j] = 0;
-        }
-    }
-    array[0][0] = 1;
-    
-    for(int i=0; i<m; i++){
-        for (int j=0; j<n; j++){
-        		if (i==0 && j==0) continue;
-        		else if(i == 0 && j!=0 ) array[i][j] = array[i][j-1];
-            else if(i != 0 && j == 0 ) array[i][j] = array[i-1][j];
-            else array[i][j] = array[i-1][j] + array[i][j-1];
-        }
-    }
-//    System.out.println(Arrays.toString(array));
-    
-    return array[m-1][n-1];
- }
 	
+
 	public boolean canJump(int[] nums) {
     int i = 0;
     while(i<=nums.length){
@@ -163,21 +84,6 @@ public class Leetcode {
     return true;
     
 	}
-	
-	public int climbStairs(int n) {
-    ArrayList<Integer> list = new ArrayList<Integer>();
-    
-    int i=1;
-    while(i<=n){
-      if(i==1) list.add(1);
-      else if(i==2) list.add(2);
-      else{
-      	list.add(list.get(i-2)+list.get(i-3));
-      }
-      i++;
-    }
-    return list.get(list.size()-1);
-  }
 	
 	public int maxSubArray(int[] nums) {
     int biggist = Integer.MIN_VALUE;
@@ -196,7 +102,6 @@ public class Leetcode {
     	return biggist;
     else return max;
   }
-	
 	
 	public int majorityElement(int[] nums) {
 		int biggist = nums[0];
@@ -233,12 +138,9 @@ public class Leetcode {
 				j++;
 			}
 		}
-		
 		for(int k = 0; k<nums.length;k++){
 			System.out.println(nums[k]);
-
 		}
-    
   }
 	
 	public String countAndSay(int n) {
@@ -381,7 +283,6 @@ public class Leetcode {
 				while(start<end && nums[end] == nums[end-1]) end--;
 				start++;
 				end--;
-				
 			}
 		}
 		return res;
@@ -517,14 +418,9 @@ public class Leetcode {
 				start = j;
 			}
 			
-			
 		}
-		
 		String result = str.substring(start-MaxLength+1, start+MaxLength).replace("#", "");
-		
 		System.out.println(result);
-		
-		
     return str;
   }
 }
