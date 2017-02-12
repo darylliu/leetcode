@@ -10,11 +10,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Stack;
 
+import com.leetcode.problem.one.Problem15;
+
 public class Leetcode {
 	public int closest = Integer.MAX_VALUE;
 	public static ArrayList<Integer> res = new ArrayList<Integer>();
 	public static void main(String[] args) {
-		
+		int c[] = {-1,0,1,2,-1,-4};
+		System.out.println(new Problem15().threeSum(c));
 	}
 	
 	public boolean isPalindrome(String s) {
