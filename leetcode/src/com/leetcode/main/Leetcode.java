@@ -13,13 +13,15 @@ import java.util.Stack;
 import com.leetcode.problem.one.Problem15;
 import com.leetcode.problem.one.Problem17;
 import com.leetcode.problem.one.Problem18;
+import com.leetcode.problem.one.Problem38;
 
 public class Leetcode {
 	public int closest = Integer.MAX_VALUE;
 	public static ArrayList<Integer> res = new ArrayList<Integer>();
 	public static void main(String[] args) {
 		int c[] = {-1 ,2, 1, -4};
-//		System.out.println(new Problem16().threeSumClosest(c ,1));
+//		System.out.println(new Problem38().countAndSay(4));
+		System.out.println(-21%10);
 	}
 	
 	public boolean isPalindrome(String s) {
