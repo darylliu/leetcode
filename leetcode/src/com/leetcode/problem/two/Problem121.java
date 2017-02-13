@@ -10,10 +10,8 @@ public class Problem121 {
     int max = 0;
     int tmp = 0;
     for(int i=1;i<prices.length; i++){
-        int tmp2 = prices[i] - prices[i-1];
-        if(tmp2+tmp>max) max = tmp2+tmp;
-        if(tmp2+tmp<0) tmp = 0;
-        else tmp += tmp2;
+        tmp = Math.max(0, tmp += prices[i] - prices[i-1]) ;
+        max = Math.max(max, tmp);
         
     }
     return max;
