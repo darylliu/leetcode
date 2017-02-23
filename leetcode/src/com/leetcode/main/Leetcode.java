@@ -21,7 +21,7 @@ public class Leetcode {
 	public static void main(String[] args) {
 		int c[] = {-1 ,2, 1, -4};
 //		System.out.println(new Problem38().countAndSay(4));
-		System.out.println(-21%10);
+		System.out.println(5>>1 & 1);
 	}
 	
 	public boolean isPalindrome(String s) {
